@@ -1,0 +1,14 @@
+/.DS_Store
+/.env
+/.env.local
+
+day2/node_modules
+day2/.env
+day2/.env.local
+day2/package-lock.json
+
+
+day1/node_modules
+day1/.env
+day1/.env.local
+day1/package-lock.json
