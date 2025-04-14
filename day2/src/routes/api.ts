@@ -5,6 +5,8 @@ import { validateUser } from '../utils/validateUser';
 const APIRouter = Router();
 
 APIRouter.get('/users', (req, res) => {
+    // @ts-expect-error
+    console.log("req.myParam", req.myParam);
     res.json(users);
 });
 
