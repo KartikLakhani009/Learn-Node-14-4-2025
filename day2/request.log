@@ -1,1 +1,4 @@
 [2025-04-14T11:32:13.433Z] GET request to /api/users
+[2025-04-14T11:35:05.303Z] GET request to /api/users
+[2025-04-14T11:35:16.991Z] GET request to /api/users/2
+[2025-04-15T10:30:52.520Z] POST request to /api/user

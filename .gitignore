@@ -6,7 +6,7 @@ day2/node_modules
 day2/.env
 day2/.env.local
 day2/package-lock.json
-
+day2/request.log
 
 day1/node_modules
 day1/.env
