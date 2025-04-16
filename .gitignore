@@ -12,3 +12,7 @@ day1/node_modules
 day1/.env
 day1/.env.local
 day1/package-lock.json
+
+
+
+day2/request.log
