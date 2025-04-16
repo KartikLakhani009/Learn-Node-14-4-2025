@@ -23,3 +23,10 @@
 [2025-04-16T10:01:06.781Z] GET request to /api/user/67fe71c9195dd68b6d5c2fb9
 [2025-04-16T10:01:13.038Z] DELETE request to /api/user/67fe71c9195dd68b6d5c2fb9
 [2025-04-16T10:01:21.801Z] DELETE request to /api/user/67fe71c9195dd68b6d5c2cccc
+[2025-04-16T10:12:47.141Z] GET request to /api/user
+[2025-04-16T10:12:52.442Z] GET request to /api/user/67fe71c9195dd68b6d5c2fb9
+[2025-04-16T10:13:00.850Z] GET request to /api/user/67fe7217324e3d1807df439b
+[2025-04-16T10:13:22.603Z] PUT request to /api/user/67fe7217324e3d1807df439b
+[2025-04-16T10:13:32.193Z] PUT request to /api/user/67fe7217324e3d1807df439b
+[2025-04-16T10:13:37.409Z] GET request to /api/user/67fe7217324e3d1807df439b
+[2025-04-16T10:13:40.340Z] GET request to /api/user
