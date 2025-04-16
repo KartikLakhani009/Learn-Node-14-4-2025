@@ -8,21 +8,22 @@ import { connectionSetup, connectionUrl } from './utils/connection';
 const app = express();
 const port = 3000;
 
-connectionSetup(connectionUrl);
+connectionSetup(connectionUrl).then(()=>{
+    console.log("MongoDB connected!");
+}).catch((err)=>{
+    console.log("MongoDB connection error", err);
+});
 
 // Parse incoming JSON
 app.use(express.json()); 
 // app.use(express.urlencoded({ extended: true }));
 
-// @ts-expect-error
 app.use(loggerFile);
 
 // html pages
-
 app.use('/',htmlRouter);
 
 // api pages
-// @ts-expect-error
 app.use('/api/user', mw1, APIRouter);
 
 app.listen(port, () => {

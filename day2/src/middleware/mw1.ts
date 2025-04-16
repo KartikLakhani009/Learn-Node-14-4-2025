@@ -1,4 +1,4 @@
-import { NextFunction, response, Router } from "express";
+import { NextFunction, response, Router, Request, Response } from "express";
 
 const mw1 = (request:Request, response:Response, next:NextFunction) => {
 

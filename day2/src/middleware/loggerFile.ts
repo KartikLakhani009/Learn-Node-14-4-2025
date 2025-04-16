@@ -1,4 +1,4 @@
-import { NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import fs from "fs";
 
 const loggerFile = (req:Request, res:Response, next:NextFunction) => {
