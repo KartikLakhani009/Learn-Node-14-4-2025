@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short url</title>
+</head>
+<body>
+    <h1>Short URL</h1>
+    <form action="/create_url" method="POST">
+        <label style="margin: 10px;" for="originalUrl">Enter Your URL:</label><br/>
+        <input style="margin: 10px; width: 600px;" type="text" name="originalUrl" placeholder="Enter URL to shorten" required><br/>
+        <button style="margin: 10px;" type="submit">
+            Generate Short URL
+        </button>
+    </form>
+    <% if (urlData) { %>
+        <div>
+            <% if (urlData.statusCode == 200 || urlData.statusCode == 201) { %>
+                <h2 style="margin: 10px;">Short URL: <a href="<%= urlData.data.originalUrl %>">http://localhost:8005/<%= urlData.data.shortUrl %></a></h2>
+            <% } else if (urlData.statusCode == 500) { %>
+                <h2 style="margin: 10px; color: red;">Error: <%= urlData?.error || 'internal server error' %></h2>
+            <% } %>
+        </div>
+    <% } %>
+</body>
+</html>

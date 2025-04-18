@@ -14,8 +14,8 @@ export async function createOrGetShortUrl(originalUrl?: string) {
     }
     // Generate a new short URL
      // Generate a random short URL (you can use a better algorithm for production)
-    const _shortUrl = Math.random().toString(36).substring(2, 8);
-    console.log("from code --- _shortUrl", _shortUrl);
+    // const _shortUrl = Math.random().toString(36).substring(2, 8);
+    // console.log("from code --- _shortUrl", _shortUrl);
 
     const shortUrl = randomUUID();
 
