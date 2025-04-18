@@ -4,7 +4,6 @@ import Url from '../model/urlSchema';
 
 export async function createShortUrlForPage(req:Request, res:Response) {
     try{
-        console.log("from code --- createShortUrlForPage ==> req ",req);
         const { originalUrl } = req.body;
         
         console.log("from code --- page request ---- originalUrl", originalUrl);
