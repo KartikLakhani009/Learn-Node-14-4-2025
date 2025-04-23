@@ -38,3 +38,19 @@ export async function checkIfUserLoggedIn(req: Request, res: Response, next: Nex
     (req as customRequest).user = _res.user!;
     next();
 }
+
+
+export async function retrictUserOnlyWithHeaders(req: Request, res: Response, next: NextFunction) {
+    
+    const sessionId = req.headers.authorization?.split(" ")[1]!;
+    const _res = await authService(sessionId);
+    if(_res.statusCode !== 200) {
+        res.status(_res.statusCode).json({
+            error: _res.error,
+        });
+        return;
+    }
+    
+    (req as customRequest).user = _res.user!;
+    next();
+}

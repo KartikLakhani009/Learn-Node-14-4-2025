@@ -4,7 +4,8 @@ import { dbConnect } from "./utils/dbConnect";
 import path from "path";
 import pagesRoute from "./routes/pagesRoute";
 import cookieParser from "cookie-parser";
-import { checkIfUserLoggedIn } from "./middleware/authMid";
+import { checkIfUserLoggedIn, retrictUserOnlyWithHeaders } from "./middleware/authMid";
+import apiAuthRoute from "./routes/apiAuthRoute";
 
 const app = express();
 const PORT = process.env.PORT || 8005;
@@ -34,7 +35,8 @@ app.use(cookieParser());
 app.use("/",pagesRoute);
 
 // Routes
-app.use("/api/url", checkIfUserLoggedIn, router);
+app.use("/api/auth",apiAuthRoute);
+app.use("/api/url", retrictUserOnlyWithHeaders, router);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
