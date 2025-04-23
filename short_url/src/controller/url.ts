@@ -11,7 +11,8 @@ export async function createShortUrl(req: Request, res: Response) {
     
         const { originalUrl } = req.body;
 
-        const result = await createOrGetShortUrl(originalUrl);
+        // @ts-expect-error
+        const result = await createOrGetShortUrl(res.user,originalUrl);
         
         if(result){
             res.status(result.statusCode).json({

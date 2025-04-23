@@ -3,6 +3,8 @@ import router from "./routes/url";
 import { dbConnect } from "./utils/dbConnect";
 import path from "path";
 import pagesRoute from "./routes/pagesRoute";
+import cookieParser from "cookie-parser";
+import { checkIfUserLoggedIn } from "./middleware/authMid";
 
 const app = express();
 const PORT = process.env.PORT || 8005;
@@ -26,12 +28,13 @@ app.set("views",path.join(__dirname, '.', 'views'));
 // Middleware to parse JSON requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // html pages
 app.use("/",pagesRoute);
 
 // Routes
-app.use("/api/url", router);
+app.use("/api/url", checkIfUserLoggedIn, router);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
