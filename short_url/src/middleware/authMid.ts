@@ -42,8 +42,15 @@ export async function checkIfUserLoggedIn(req: Request, res: Response, next: Nex
 
 export async function retrictUserOnlyWithHeaders(req: Request, res: Response, next: NextFunction) {
     
-    const sessionId = req.headers.authorization?.split(" ")[1]!;
-    const _res = await authService(sessionId);
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        res.status(401).json({
+            error: "Unauthorized",
+        });
+        return;
+    }
+    const token = authHeader.split(" ")[1];
+    const _res = await authService(token);
     if(_res.statusCode !== 200) {
         res.status(_res.statusCode).json({
             error: _res.error,
