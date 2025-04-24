@@ -19,3 +19,11 @@ short_url/.env
 short_url/.env.local
 short_url/package-lock.json
 short_url/request.log
+
+
+demo-upload/node_modules
+demo-upload/.env
+demo-upload/.env.local
+demo-upload/package-lock.json
+demo-upload/request.log
+demo-upload/src/uploads
