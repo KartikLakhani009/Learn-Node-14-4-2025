@@ -4,7 +4,6 @@ import Url from '../model/urlSchema';
 import UserModel from '../model/userSchema';
 import { validateSignupUser } from '../utils/validateSignupUser';
 
-import { v4 } from 'uuid';
 import { addUserToMap } from '../services/authStorage';
 
 export async function createShortUrlForPage(req:Request, res:Response) {
