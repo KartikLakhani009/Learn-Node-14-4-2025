@@ -27,3 +27,11 @@ demo-upload/.env.local
 demo-upload/package-lock.json
 demo-upload/request.log
 demo-upload/src/uploads
+
+
+blogy/node_modules
+blogy/.env
+blogy/.env.local
+blogy/package-lock.json
+blogy/request.log
+blogy/src/uploads

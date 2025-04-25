@@ -1,5 +1,5 @@
 {
-  "name": "demo-upload",
+  "name": "blogy",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -13,14 +13,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "multer": "^1.4.5-lts.2"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "@types/multer": "^1.4.12",
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
