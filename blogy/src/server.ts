@@ -43,7 +43,6 @@ app.use('/api/auth', apiAuthRoutes);
 
 // Home route
 app.get('/', (req, res) => {
-  console.log('Home route accessed --> res.locals.user', res.locals.user);
   res.render('home', { 
     pageTitle: 'Home',
     user: res.locals.user || null

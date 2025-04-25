@@ -56,6 +56,7 @@ export const isNotAuthenticated = (req: Request, res: Response, next: NextFuncti
   const user = res?.locals?.user ?? null;
   console.log('isNotAuthenticated user', user);
 
+
   if (token) {
     try {
       jwt.verify(token, JWT_SECRET);
@@ -64,18 +65,8 @@ export const isNotAuthenticated = (req: Request, res: Response, next: NextFuncti
         res.redirect('/');
         return;
       }else{
-        // Decode token to get user info
-        const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
-        console.log('isNotAuthenticated decoded', decoded);
-        (req as AuthRequest).user = decoded;
-        // Make user info available to all views
-        res.locals.user = decoded;
-        // Set the returnTo path to the home page
-        res.locals.returnTo = '/';
-        res.redirect('/');
-        
+        next();
       }
-      return;
     } catch (error) {
       // Token is invalid, clear it
       res.clearCookie('token');
