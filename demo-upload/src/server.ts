@@ -23,6 +23,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Serve static files from the "uploads" directory
+app.use('/uploads', express.static(path.join(__dirname, '.', 'uploads')));
 // Middleware to parse JSON requests
 app.use(express.urlencoded({ extended: false }));
 
@@ -33,7 +35,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload-single', upload.single('singleFile'), (req, res) => {
   console.log(req.file);
-  req.file ? res.send(`File uploaded successfully: ${req.file.filename}`) : res.status(400).send('No file uploaded');
+  req.file ? res.send(`Image uploaded successfully. <a href="/uploads/${req.file.filename}">View Image</a>`) : res.status(400).send('No file uploaded');
 });
 
 app.post('/upload-multiple-files', upload.fields([{name:'firstFile'},{name:'secondFile'}]), (req, res) => {
