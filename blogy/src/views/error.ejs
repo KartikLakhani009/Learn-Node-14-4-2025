@@ -1,0 +1,24 @@
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h1 class="card-title text-danger">Error</h1>
+          <p class="lead">Sorry, something went wrong.</p>
+          
+          <% if (process.env.NODE_ENV === 'development' && error.stack) { %>
+            <div class="alert alert-danger mt-4">
+              <h5>Error Details:</h5>
+              <p><%= error.message %></p>
+              <hr>
+              <pre class="mb-0"><code><%= error.stack %></code></pre>
+            </div>
+          <% } %>
+          
+          <a href="/" class="btn btn-primary mt-3">Go to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

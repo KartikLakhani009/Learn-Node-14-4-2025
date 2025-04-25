@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-8 mx-auto text-center">
+      <h1 class="display-4">Welcome to Blogy</h1>
+      <p class="lead">A clean and modern Express.js + TypeScript boilerplate with authentication.</p>
+      
+      <% if (user) { %>
+        <div class="alert alert-success mt-4">
+          <h4>🎉 You're logged in!</h4>
+          <p>Welcome, <%= user.email %></p>
+          <hr>
+          <p class="mb-0">You can now access all the protected features of the application.</p>
+        </div>
+        
+        <div class="mt-4">
+          <form action="/auth/logout" method="POST">
+            <button type="submit" class="btn btn-outline-danger">Logout</button>
+          </form>
+        </div>
+      <% } else { %>
+        <div class="mt-4">
+          <p>Please login or create an account to get started.</p>
+          <a href="/auth/login" class="btn btn-primary me-2">Login</a>
+          <a href="/auth/signup" class="btn btn-outline-primary">Sign Up</a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Express.js</h5>
+          <p class="card-text">Fast, unopinionated, minimalist web framework for Node.js with built-in middleware and routing.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">TypeScript</h5>
+          <p class="card-text">Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">JWT Auth</h5>
+          <p class="card-text">Secure authentication using JSON Web Tokens for both API and server-rendered routes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

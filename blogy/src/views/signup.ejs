@@ -1,0 +1,112 @@
+
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h1 class="card-title text-center mb-4">Sign Up</h1>
+        
+        <% if (errors && errors.length > 0) { %>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+        
+        <form action="/auth/signup" method="POST" enctype="multipart/form-data" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              class="form-control <%= errors.find(e => e.param === 'name') ? 'is-invalid' : '' %>" 
+              id="name" 
+              name="name"
+              value="<%= inputData.name %>" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'name')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'name').msg %>
+              </div>
+            <% } %>
+          </div>
+          
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input 
+              type="email" 
+              class="form-control <%= errors.find(e => e.param === 'email') ? 'is-invalid' : '' %>" 
+              id="email" 
+              name="email"
+              value="<%= inputData.email %>" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'email')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'email').msg %>
+              </div>
+            <% } else { %>
+              <div class="form-text">We'll never share your email with anyone else.</div>
+            <% } %>
+          </div>
+          
+          <div class="mb-3">
+            <label for="profilePic" class="form-label">Profile Picture (Optional)</label>
+            <input 
+              type="file" 
+              class="form-control" 
+              id="profilePic" 
+              name="profilePic"
+              accept="image/jpeg,image/png,image/gif"
+            >
+            <div class="form-text">Max size: 5MB. Supported formats: JPEG, PNG, GIF.</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              class="form-control <%= errors.find(e => e.param === 'password') ? 'is-invalid' : '' %>" 
+              id="password" 
+              name="password" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'password')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'password').msg %>
+              </div>
+            <% } %>
+          </div>
+          
+          <div class="mb-4">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input 
+              type="password" 
+              class="form-control <%= errors.find(e => e.param === 'confirmPassword') ? 'is-invalid' : '' %>" 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'confirmPassword')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'confirmPassword').msg %>
+              </div>
+            <% } %>
+          </div>
+          
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Create Account</button>
+          </div>
+        </form>
+        
+        <hr class="my-4">
+        
+        <div class="text-center">
+          <p>Already have an account? <a href="/auth/login">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

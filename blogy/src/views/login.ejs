@@ -1,0 +1,72 @@
+
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h1 class="card-title text-center mb-4">Login</h1>
+        
+        <% if (errors && errors.length > 0) { %>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+        
+        <form action="/auth/login" method="POST" novalidate>
+          <input type="hidden" name="returnTo" value="<%= typeof returnTo !== 'undefined' ? returnTo : '/' %>">
+          
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input 
+              type="email" 
+              class="form-control <%= errors.find(e => e.param === 'email') ? 'is-invalid' : '' %>" 
+              id="email" 
+              name="email"
+              value="<%= inputData.email %>" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'email')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'email').msg %>
+              </div>
+            <% } %>
+          </div>
+          
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              class="form-control <%= errors.find(e => e.param === 'password') ? 'is-invalid' : '' %>" 
+              id="password" 
+              name="password" 
+              required
+            >
+            <% if (errors.find(e => e.param === 'password')) { %>
+              <div class="invalid-feedback">
+                <%= errors.find(e => e.param === 'password').msg %>
+              </div>
+            <% } %>
+          </div>
+          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+        
+        <hr class="my-4">
+        
+        <div class="text-center">
+          <p>Don't have an account? <a href="/auth/signup">Sign up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Custom button styling */
+.btn-primary {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2653d4;
+}
+
+/* Custom card styling */
+.card {
+  border-radius: 0.75rem;
+}
+
+.card-body {
+  border-radius: 0.75rem;
+}
+
+/* Form validation styling */
+.form-control:focus {
+  border-color: #bac8f3;
+  box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
