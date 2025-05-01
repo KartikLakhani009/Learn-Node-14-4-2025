@@ -1,13 +1,10 @@
 
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import { LoginInput, SignupInput, AuthRequest } from '../types/user';
 import { User } from '../models/User';
-import { env } from '../config/env';
-
-// JWT secret key (should be in environment variables in production)
-const JWT_SECRET = env.JWT_SECRET;
+import { getToken } from '../utils/token';
+import { default_avtar } from '../config/constants';
 
 // API Login
 export const login = async (req: Request, res: Response): Promise<void> => {
@@ -30,11 +27,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const token = getToken(user);
 
     res.status(200).json({
       message: 'Login successful',
@@ -79,15 +72,11 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       name,
       email,
       password: hashedPassword,
-      profilePic: file ? `/uploads/profiles/${file.filename}` : null
+      profilePic: file ? `/uploads/profiles/${file.filename}` : default_avtar
     });
     
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const token = getToken(user);
 
     res.status(201).json({
       message: 'User created successfully',

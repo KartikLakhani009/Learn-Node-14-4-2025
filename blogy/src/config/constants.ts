@@ -1,0 +1,1 @@
+export const default_avtar = 'https://avatar.iran.liara.run/public';

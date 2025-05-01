@@ -4,6 +4,7 @@ import { User as UserType } from '../types/user';
 
 export interface UserDocument extends Omit<UserType, 'id'>, Document {
   profilePic?: string;
+  role: 'user' | 'admin';
   createdAt: Date;
   updatedAt: Date;
 }
@@ -28,8 +29,13 @@ const UserSchema = new Schema<UserDocument>(
     },
     profilePic: {
       type: String,
-      default: null
+      default: 'https://avatar.iran.liara.run/public'
     },
+    role:{
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user'
+    }
   },
   {
     timestamps: true

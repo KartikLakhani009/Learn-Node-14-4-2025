@@ -1,26 +1,24 @@
-
 <div class="container">
   <div class="row mt-4">
     <div class="col-lg-8 mx-auto text-center">
       <h1 class="display-4">Welcome to Blogy</h1>
-      <p class="lead">A clean and modern Express.js + TypeScript boilerplate with authentication.</p>
+      <p class="lead">Share your thoughts with the world</p>
+      
+      <!-- Success message after blog deletion -->
+      <% if (typeof req !=='undefined' && req.query && req.query.deleted==='true' ) { %>
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+          Blog post deleted successfully!
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
       
       <% if (user) { %>
-        <div class="alert alert-success mt-4">
-          <h4>🎉 You're logged in!</h4>
-          <p>Welcome, <%= user.email %></p>
-          <hr>
-          <p class="mb-0">You can now access all the protected features of the application.</p>
-        </div>
-        
         <div class="mt-4">
-          <form action="/auth/logout" method="POST">
-            <button type="submit" class="btn btn-outline-danger">Logout</button>
-          </form>
+          <a href="/blog/add" class="btn btn-primary">Create New Blog</a>
         </div>
       <% } else { %>
         <div class="mt-4">
-          <p>Please login or create an account to get started.</p>
+          <p>Please login or create an account to start blogging.</p>
           <a href="/auth/login" class="btn btn-primary me-2">Login</a>
           <a href="/auth/signup" class="btn btn-outline-primary">Sign Up</a>
         </div>
@@ -29,31 +27,43 @@
   </div>
   
   <div class="row mt-5">
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">Express.js</h5>
-          <p class="card-text">Fast, unopinionated, minimalist web framework for Node.js with built-in middleware and routing.</p>
-        </div>
-      </div>
-    </div>
+    <h2 class="mb-4">Latest Blogs</h2>
     
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">TypeScript</h5>
-          <p class="card-text">Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.</p>
+    <% if (locals.blogs && blogs.length> 0) { %>
+      <% blogs.forEach(blog=> { %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <% if (blog.coverImage) { %>
+              <img src="<%= blog.coverImage %>" class="card-img-top" alt="<%= blog.title %>"
+                style="height: 200px; object-fit: cover;">
+              <% } else { %>
+                <div class="bg-light text-center py-5">
+                  <i class="bi bi-journal-text" style="font-size: 3rem;"></i>
+                </div>
+            <% } %>
+              <div class="card-body">
+              <h5 class="card-title">
+                <%= blog.title %>
+              </h5>
+              <p class="card-text text-muted small">
+                By <%= blog.createdBy.name %> |
+                  <%= new Date(blog.createdAt).toLocaleDateString() %>
+              </p>
+              <p class="card-text">
+                <%= blog.description.substring(0, 100) %>
+                  <%= blog.description.length> 100 ? '...' : '' %>
+              </p>
+              <a href="/blog/<%= blog._id %>" class="btn btn-sm btn-outline-primary">Read More</a>
+              </div>
+              </div>
+        </div>
+      <% }); %>
+        <% } else { %>
+          <div class="col-12 text-center">
+            <div class="alert alert-info">
+              <p class="mb-0">No blog posts yet. Be the first to create one!</p>
         </div>
       </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">JWT Auth</h5>
-          <p class="card-text">Secure authentication using JSON Web Tokens for both API and server-rendered routes.</p>
-        </div>
-      </div>
-    </div>
+    <% } %>
   </div>
 </div>

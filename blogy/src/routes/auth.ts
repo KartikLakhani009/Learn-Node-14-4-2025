@@ -13,7 +13,7 @@ router.post('/login', isNotAuthenticated, validateLogin, authWebController.postL
 
 // Routes for signup page
 router.get('/signup', isNotAuthenticated, authWebController.getSignup);
-router.post('/signup', isNotAuthenticated, uploadProfilePic, validateSignup, authWebController.postSignup);
+router.post('/signup', isNotAuthenticated, uploadProfilePic.single('profilePic'), validateSignup, authWebController.postSignup);
 
 // Route for logout
 router.post('/logout', authWebController.logout);

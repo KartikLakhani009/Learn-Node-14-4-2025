@@ -1,13 +1,12 @@
 
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import { LoginInput, SignupInput, AuthRequest } from '../types/user';
 import { User } from '../models/User';
 import { env } from '../config/env';
+import { getToken } from '../utils/token';
+import { default_avtar } from '../config/constants';
 
-// JWT secret key (should be in environment variables in production)
-const JWT_SECRET = env.JWT_SECRET;
 
 // Cookie config
 const COOKIE_OPTIONS = {
@@ -58,11 +57,7 @@ export const postLogin = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const token = getToken(user);
 
     // Set token in cookie
     res.cookie('token', token, COOKIE_OPTIONS);
@@ -114,15 +109,11 @@ export const postSignup = async (req: Request, res: Response): Promise<void> => 
       name,
       email,
       password: hashedPassword,
-      profilePic: file ? `/uploads/profiles/${file.filename}` : null
+      profilePic: file ? `/uploads/profiles/${file.filename}` : default_avtar
     });
     
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user._id, email },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const token = getToken(user);
 
     // Set token in cookie
     res.cookie('token', token, COOKIE_OPTIONS);

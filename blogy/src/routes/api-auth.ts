@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
 import * as authController from '../controllers/authController';
-import { verifyToken } from '../middlewares/auth';
+import { verifyAndRestrict } from '../middlewares/auth';
 import { uploadProfilePic } from '../middlewares/upload';
 
 const router = Router();
@@ -15,7 +15,7 @@ router.post('/login', [
 
 // Signup route
 router.post('/signup', 
-  uploadProfilePic,
+  uploadProfilePic.single('profilePic'),
   [
     body('name').trim().notEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Please enter a valid email address'),
@@ -31,6 +31,6 @@ router.post('/signup',
 );
 
 // Protected route - get user info
-router.get('/me', verifyToken, authController.getMe);
+router.get('/me', verifyAndRestrict, authController.getMe);
 
 export default router;

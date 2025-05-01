@@ -7,6 +7,8 @@ export interface BlogDocument extends Document {
   description: string;
   createdAt: Date;
   updatedAt: Date;
+  body: string;
+  coverImage?: string;
 }
 
 const BlogSchema = new Schema<BlogDocument>(
@@ -25,7 +27,16 @@ const BlogSchema = new Schema<BlogDocument>(
       type: String,
       required: true,
       trim: true
-    }
+    },
+    body:{
+      type: String,
+      required: true,
+      trim: true
+    },
+    coverImage: {
+      type: String,
+      trim: true
+    },
   },
   {
     timestamps: true
