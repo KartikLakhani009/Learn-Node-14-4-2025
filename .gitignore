@@ -35,3 +35,15 @@ blogy/.env.local
 blogy/package-lock.json
 blogy/request.log
 blogy/src/uploads
+
+
+stream-demo-1/node_modules
+stream-demo-1/.env
+stream-demo-1/.env.local
+stream-demo-1/package-lock.json
+
+cluster-demo-1/node_modules
+cluster-demo-1/.env
+cluster-demo-1/.env.local
+cluster-demo-1/package-lock.json
+cluster-demo-1/request.log
