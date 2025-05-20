@@ -55,3 +55,10 @@ redis-demo-1/package-lock.json
 redis-demo-1/request.log
 
 
+bullMqueue-d1/node_modules
+bullMqueue-d1/.env
+bullMqueue-d1/.env.local
+bullMqueue-d1/package-lock.json
+bullMqueue-d1/request.log
+
+
