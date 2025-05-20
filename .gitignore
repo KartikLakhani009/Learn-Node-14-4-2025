@@ -47,3 +47,11 @@ cluster-demo-1/.env
 cluster-demo-1/.env.local
 cluster-demo-1/package-lock.json
 cluster-demo-1/request.log
+
+redis-demo-1/node_modules
+redis-demo-1/.env
+redis-demo-1/.env.local
+redis-demo-1/package-lock.json
+redis-demo-1/request.log
+
+
