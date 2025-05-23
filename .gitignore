@@ -62,3 +62,16 @@ bullMqueue-d1/package-lock.json
 bullMqueue-d1/request.log
 
 
+rate-limit-d1/node_modules
+rate-limit-d1/.env
+rate-limit-d1/.env.local
+rate-limit-d1/package-lock.json
+rate-limit-d1/request.log
+
+
+throttling-d1/node_modules
+throttling-d1/.env
+throttling-d1/.env.local
+throttling-d1/package-lock.json
+throttling-d1/request.log
+

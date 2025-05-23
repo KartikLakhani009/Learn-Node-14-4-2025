@@ -1,6 +1,12 @@
 import {Queue} from 'bullmq';
 
-const notification_queue = new Queue('email-queue');
+const notification_queue = new Queue('email-queue',{
+    connection: {
+        host: 'localhost',
+        port: 6379,
+        password: undefined
+    }
+});
 
 
 async function init() {
