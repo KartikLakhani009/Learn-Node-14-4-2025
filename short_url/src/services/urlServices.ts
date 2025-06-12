@@ -43,6 +43,7 @@ export async function getUrls(uid: string) {
             }
         }
     ]);
+    console.log("urls", urls);
     if(!urls) {
         return {statusCode: 404, error: "No URLs found" };
     }

@@ -6,6 +6,8 @@ import pagesRoute from "./routes/pagesRoute";
 import cookieParser from "cookie-parser";
 import { checkIfUserLoggedIn, retrictUserOnlyWithHeaders } from "./middleware/authMid";
 import apiAuthRoute from "./routes/apiAuthRoute";
+import swaggerUi from 'swagger-ui-express';
+import { specs } from './utils/swagger';
 
 const app = express();
 const PORT = process.env.PORT || 8005;
@@ -30,6 +32,19 @@ app.set("views",path.join(__dirname, '.', 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+const env = process.env.NODE_ENV;
+
+console.log("env", env);
+
+if (env === 'production') {
+    app.use('/api-docs', (req, res) => {
+      res.status(404).send('Not found');
+    });
+}
+
+// Swagger Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // html pages
 app.use("/",pagesRoute);

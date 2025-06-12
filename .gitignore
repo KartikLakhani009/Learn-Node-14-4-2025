@@ -19,6 +19,7 @@ short_url/.env
 short_url/.env.local
 short_url/package-lock.json
 short_url/request.log
+short_url/coverage
 
 
 demo-upload/node_modules
@@ -74,4 +75,11 @@ throttling-d1/.env
 throttling-d1/.env.local
 throttling-d1/package-lock.json
 throttling-d1/request.log
+
+test-d1/node_modules
+test-d1/.env
+test-d1/.env.local
+test-d1/package-lock.json
+test-d1/request.log
+test-d1/coverage
 
